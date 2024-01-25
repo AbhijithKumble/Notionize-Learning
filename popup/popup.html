@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./popup.css" />
+    <title>Notionize Learning</title>
+  </head>
+
+  <body>
+    <form id="form">
+      <div class="link-receiver">
+        <label class="desc" for="youtube-link">Paste your youtube link</label>
+        <input
+          id="youtube-link"
+          name="url"
+          type="url"
+          placeholder="https://youtube.com/watch="
+          required
+        />
+      </div>
+
+      <div class="submit-btn">
+        <button id="submit" type="submit">submit</button>
+      </div>
+    </form>
+    <script type="module" src="popup.js"></script>
+    <script type="module" src="../scripts/main.js"></script>
+    
+  </body>
+</html>
+

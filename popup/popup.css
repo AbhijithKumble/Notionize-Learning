@@ -1,0 +1,25 @@
+body {
+    box-sizing: border-box;
+}
+
+#form{
+  width: 200px;
+}
+
+.link-receiver {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.desc {
+  font-family: cursive;
+  font-size : 1rem;
+  text-align: center;
+  margin: auto;
+}
+
+.submit-btn {
+  margin-left: 4.5rem ;
+  margin-top: 10px;
+}
