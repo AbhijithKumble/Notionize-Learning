@@ -1,8 +1,11 @@
 import { config } from "dot-env";
 config();
 
-let youtubeVideoLink = "https://www.youtube.com/watch?v=x-hGIYZj2Rw";
 
+const GOOGLE_API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${process.env['GOOGLE_AI_KEY']}` 
+// demo link 
+let youtubeVideoLink = "https://www.youtube.com/watch?v=x-hGIYZj2Rw";
+//prompt
 let toSummaryText = `${youtubeVideoLink} -> Summarise this video and put it in the form of bullet points`;
 
 let data = {
@@ -15,16 +18,11 @@ let data = {
     ]
 };
 
-let url = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${process.env['GOOGLE_AI_KEY']}` 
-
-const createSummary = async() => {
-
+const createSummary = async(url) => {
     try { 
-
         const response = await fetch( url, {
         method:"POST",
         headers: {
-            
             "Content-Type" : "application/json"
         },
         body: JSON.stringify(data)
@@ -40,4 +38,4 @@ const createSummary = async() => {
     }
 };
 
-createSummary();
+// createSummary(url);

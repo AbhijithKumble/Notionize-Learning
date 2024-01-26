@@ -5,7 +5,8 @@ let submitBtn = document.getElementById("submit");
 submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
     let youtubeLink = document.getElementById("youtube-link");
-    let youtubeLinkValue = youtubeLink.value;    
+    let youtubeLinkValue = youtubeLink.value;  
+    main(youtubeLinkValue);
+    // const response = main(youtubeLinkValue);  
 });
 
-await main();

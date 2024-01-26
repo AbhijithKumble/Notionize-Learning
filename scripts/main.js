@@ -70,7 +70,9 @@ listUsers();
 createPageInDatabase();
 
 
-
+const main = (url) => {
+    console.log(url);
+};
 
 
 
