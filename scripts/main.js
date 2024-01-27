@@ -1,26 +1,28 @@
+import getTranscript from "./youtube.transcript";
+import URL from "url"
+
 const main = (url) => {
     console.log(url);
 
     // get the transcript from youtube-transcript.py
+    // const URL = new URL(url);
+    // const videoId = URL.searchParameters.get('v');
+    // console.log(videoId);
+    // getTranscript(videoId)
+    //     .then(transcript => {
+    //         console.log('Transcript : ', transcript);
+    //     })
+    //     .catch(error => {
+    //         console.error('Error getting transcript: ', error );
+    //     });  
 
 
-
-
-
-
-
-
-
-
-
-    
     // summarise using google ai 
     //store in notion database given by the user 
     
 };
 
-
-
+export default main;
 // =========================================
 
 
@@ -71,5 +73,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 */
-
-export default main ;
