@@ -1,28 +1,41 @@
-import getTranscript from "./youtube.transcript";
-import URL from "url"
+import getTranscript from "./youtube.transcript.js";
+import { summariser } from "./google.ai.js";
+import { notionAPI } from "./notion.js";
 
-const main = (url) => {
-    console.log(url);
+const main = async (videoId) => {
+    console.log(videoId);
 
     // get the transcript from youtube-transcript.py
-    // const URL = new URL(url);
-    // const videoId = URL.searchParameters.get('v');
-    // console.log(videoId);
-    // getTranscript(videoId)
-    //     .then(transcript => {
-    //         console.log('Transcript : ', transcript);
-    //     })
-    //     .catch(error => {
-    //         console.error('Error getting transcript: ', error );
-    //     });  
+    let transcriptToSummarise = '';
+
+    await getTranscript(videoId)
+        .then(transcript => {
+            transcriptToSummarise = transcript;
+        })
+        .catch(error => {
+            console.error('Error getting transcript: ', error );
+        });  
 
 
     // summarise using google ai 
+    // console.log(transcriptToSummarise)
+    //summarised response
+
+    const responseFromGoogleAI = await summariser(transcriptToSummarise);
+    
+    console.log(responseFromGoogleAI);  
+
     //store in notion database given by the user 
     
+    const responseFromNotion = await notionAPI(responseFromGoogleAI);
+
+
 };
 
-export default main;
+main("UYySvyc4M68");
+
+// export default main;
+
 // =========================================
 
 

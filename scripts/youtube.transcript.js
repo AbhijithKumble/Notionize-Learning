@@ -1,4 +1,6 @@
-const { exec } = require('child_process');
+// const { exec } = require('child_process');
+
+import { exec } from "child_process";
 
 function getTranscript(videoId) {
     return new Promise((resolve, reject) => {

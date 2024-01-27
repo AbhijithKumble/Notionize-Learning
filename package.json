@@ -1,6 +1,8 @@
 {
+  "type": "module",
   "dependencies": {
     "@notionhq/client": "^2.2.14",
-    "dot-env": "^0.0.1"
+    "dotenv": "^16.4.1",
+    "url-parser": "^0.0.1"
   }
 }

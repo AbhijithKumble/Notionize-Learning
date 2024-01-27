@@ -1,13 +1,16 @@
-import main  from "../scripts/main.js";
+// import main  from "../scripts/main.js";
 
-let submitBtn = document.getElementById("submit");
+const submitBtn = document.getElementById("submit");
 
 submitBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    let youtubeLink = document.getElementById("youtube-link");
-    let youtubeLinkValue = youtubeLink.value;  
-    console.log(youtubeLinkValue);
-    main(youtubeLinkValue);
+    console.log("this is popup.js");
+    const youtubeLink = document.getElementById("youtube-link");
+    const youtubeLinkValue = youtubeLink.value;  
+    const url = new URL(youtubeLinkValue);
+    const videoId = url.searchParams.get('v');
+    console.log(searchParameters); 
+    main(videoId);
     
 });
 
