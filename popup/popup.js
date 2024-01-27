@@ -1,16 +1,20 @@
-// import main  from "../scripts/main.js";
+import main  from "../scripts/main.js";
+// import {config} from "dotenv";
+// config();   
 
 const submitBtn = document.getElementById("submit");
 
-submitBtn.addEventListener("click", (event) => {
+submitBtn.addEventListener("click", async(event) => {
     event.preventDefault();
     console.log("this is popup.js");
     const youtubeLink = document.getElementById("youtube-link");
     const youtubeLinkValue = youtubeLink.value;  
-    const url = new URL(youtubeLinkValue);
-    const videoId = url.searchParams.get('v');
-    console.log(searchParameters); 
-    main(videoId);
-    
+    const response = await main(youtubeLinkValue);
+    if(response == "success") {
+        console.log(200);
+    } 
+    if(response == "failure") {
+        console.log("ERROR");
+    }
 });
 

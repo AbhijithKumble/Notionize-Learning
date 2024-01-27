@@ -2,7 +2,10 @@ import getTranscript from "./youtube.transcript.js";
 import { summariser } from "./google.ai.js";
 import { notionAPI } from "./notion.js";
 
-const main = async (videoId) => {
+const main = async (youtubeLinkValue) => {
+    const url = new URL(youtubeLinkValue);
+    const videoId = url.searchParams.get('v');
+    
     console.log(videoId);
 
     // get the transcript from youtube-transcript.py
@@ -18,16 +21,12 @@ const main = async (videoId) => {
 
 
     // summarise using google ai 
-    // console.log(transcriptToSummarise)
-    //summarised response
-
     const responseFromGoogleAI = await summariser(transcriptToSummarise);
-    
     console.log(responseFromGoogleAI);  
 
     //store in notion database given by the user 
     
-    const responseFromNotion = await notionAPI(responseFromGoogleAI);
+    const responseFromNotion = await notionAPI(responseFromGoogleAI, );
 
 
 };
