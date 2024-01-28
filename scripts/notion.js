@@ -1,20 +1,13 @@
-import {Client, APIErrorCode} from "@notionhq/client";
+import { Client } from "@notionhq/client";
 
 const database_ID = "9f5b362f875c45d085d5abd2326725bb";
-
-// const linkInTitle = null;
 
 const notion = new Client({
     // auth: `${process.env['NOTION_TOKEN']}`,
     auth: `secret_f6J2HlpsbWNSNMS08Fv7NGNUOoNHZdMrmuxWA0CzaQj`,
 });
 
-// const listUsers = async () => {
-//     const listUserResponse = await notion.users.list({});  
-//     console.log(listUserResponse); 
-// };
-
-const createPageInDatabase = async (textToBeStored, coverURL, title) => {
+const createPageInDatabase = async (children, coverURL, title) => {
     try {
         const createPageResponse = await notion.pages.create({
             cover : {
@@ -46,27 +39,18 @@ const createPageInDatabase = async (textToBeStored, coverURL, title) => {
                     ]
                 }
             },   
-            children: [
-                // You can add blocks as children to the page
-                {
-                    object: "block",
-                    paragraph: {
-                        rich_text: [
-                            {
-                                text: {
-                                    content: `${textToBeStored}`,
-                                },
-                            },
-                        ],
-                    },
-                },  // Add more children blocks as needed
-            ],         
+            children: children,         
         });
     console.log(createPageResponse);
     }
     catch (error){
         console.log('NO connection given');
     }
+
+    return {
+        statusCode : 200,
+        message : "successfully stored in notion"
+    };
 };
 
     // title content wiil be from youtube database i.e, youtube vieo title
@@ -74,12 +58,37 @@ const createPageInDatabase = async (textToBeStored, coverURL, title) => {
 
 // listUsers();
 
+const createBulletListPage = async (items) => {
+    const children = items.map(item => {
+      return {
+        object: "block",
+        bulleted_list_item: {
+          rich_text: [
+            {
+              text: {
+                content: item,
+              },
+            },
+          ],
+        },
+      };
+    });
+
+    return children;
+};
+
+
 export const notionAPI = async(textToBeStored, url , title) => {
-    const response = await createPageInDatabase(textToBeStored, url ,title);
+    const highlights = textToBeStored[0].text.split("\n").map((item) => item.trim().replace(/^- /, ""));
+
+    const children = await createBulletListPage(highlights);    
+
+    const response = await createPageInDatabase(children, url ,title);
     
-    console.log(response);
+    console.log(`this is a response from notion ai ${response}`);
 
     console.log("this is notionAPI");
 
     return "done";
 }
+
