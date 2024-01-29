@@ -49,7 +49,7 @@ export const summariser = async(transcript) => {
         ]
     };
 
-    const GOOGLE_AI_KEY ="AIzaSyDF361lZ9OTNfV6-HHyRLH4_w1BmYAlX1k"
+    const GOOGLE_AI_KEY = ``
 
     // const GOOGLE_API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${process.env['GOOGLE_AI_KEY']}`;
 
