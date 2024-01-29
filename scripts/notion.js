@@ -4,7 +4,7 @@ const database_ID = "9f5b362f875c45d085d5abd2326725bb";
 
 const notion = new Client({
     // auth: `${process.env['NOTION_TOKEN']}`,
-    auth: `secret_f6J2HlpsbWNSNMS08Fv7NGNUOoNHZdMrmuxWA0CzaQj`,
+    auth: ``,
 });
 
 const createPageInDatabase = async (children, coverURL, title) => {
